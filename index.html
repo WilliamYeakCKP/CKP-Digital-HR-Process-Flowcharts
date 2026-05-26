@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)file:///C:/Users/caroll.ooi/Downloads/CKP_HR_Process_Flowcharts_Interactive.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CKP Digital — HR Process Flowcharts</title>
+<link href="./CKP Digital — HR Process Flowcharts_files/css2" rel="stylesheet">
+<style>
+:root {
+  --navy:#0F2240;--navy-mid:#1A3560;--navy-light:#E8EDF5;
+  --teal:#0B7B7B;--teal-light:#E0F4F4;--teal-mid:#1A9E9E;
+  --gold:#C8962A;--gold-light:#FDF3E0;--gold-mid:#E8B84B;
+  --rose:#C0392B;--rose-light:#FDEDEC;
+  --green:#1E7D52;--green-light:#E8F6EF;
+  --amber:#D4720A;--amber-light:#FEF3E4;
+  --purple:#6B3FA0;--purple-light:#F0E8FF;
+  --slate:#4A5568;--muted:#6B7280;--border:#D1D9E6;
+  --bg:#F4F6FB;--white:#FFFFFF;--text:#0F2240;
+  --shadow:0 2px 12px rgba(15,34,64,.09);--shadow-lg:0 8px 32px rgba(15,34,64,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 55%,#1E4D8C 100%);color:white;padding:28px 40px 22px;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
+.header::before{content:'';position:absolute;right:80px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(200,150,42,.08);pointer-events:none;}
+.header-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;position:relative;z-index:1;}
+.header-left h1{font-size:20px;font-weight:700;letter-spacing:-.3px;}
+.header-left p{font-size:12px;opacity:.6;margin-top:5px;font-weight:300;}
+.header-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.8);font-family:'IBM Plex Mono',monospace;}
+.badge.gold{background:rgba(200,150,42,.2);border-color:rgba(200,150,42,.4);color:#F0C96A;}
+
+/* DRAFT BANNER */
+.draft-banner{background:var(--amber-light);border-bottom:2px solid var(--amber);padding:9px 40px;font-size:12px;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:8px;}
+.draft-banner::before{content:'⚠';font-size:13px;}
+
+/* TAB NAV */
+.tab-nav{background:white;border-bottom:2px solid var(--border);display:flex;padding:0 40px;overflow-x:auto;gap:0;}
+.tab-btn{padding:14px 20px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;font-family:'Sora',sans-serif;letter-spacing:.01em;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--teal);}
+.tab-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:middle;}
+
+/* PANELS */
+.tab-panel{display:none;padding:32px 40px 48px;}
+.tab-panel.active{display:block;}
+
+/* SECTION HEADER */
+.section-head{margin-bottom:28px;}
+.section-head h2{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.section-head p{font-size:13px;color:var(--muted);font-weight:400;}
+.process-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;}
+.meta-tag{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--slate);background:var(--navy-light);padding:4px 10px;border-radius:12px;}
+.meta-tag strong{color:var(--navy);}
+
+/* FLOW GRID */
+.flow-grid{display:grid;gap:2px;}
+.flow-row{display:grid;grid-template-columns:160px 1fr;gap:0;min-height:0;}
+.flow-lane{background:var(--navy-light);padding:10px 14px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:600;color:var(--navy);letter-spacing:.03em;text-transform:uppercase;border-right:2px solid var(--border);position:sticky;left:0;}
+.flow-lane.yegi{background:#E8F6EF;}
+.flow-lane.hod{background:#F0E8FF;}
+.flow-lane.staff{background:#FDF3E0;}
+.flow-lane.system{background:#E0F4F4;}
+.flow-lane.caroll{background:#FDEDEC;}
+
+/* STEP CARDS */
+.steps-row{display:flex;align-items:flex-start;gap:0;padding:10px 16px;flex-wrap:wrap;gap:8px;}
+.step{background:white;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;min-width:180px;max-width:240px;position:relative;box-shadow:var(--shadow);transition:all .2s;cursor:pointer;}
+.step:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.step.expanded .step-detail{display:block;}
+.step-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:4px;}
+.step-title{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.3;}
+.step-detail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
+.step-detail p{font-size:11.5px;color:var(--slate);line-height:1.5;margin-bottom:4px;}
+.step-detail .sla{font-size:11px;color:var(--teal);font-weight:600;margin-top:6px;}
+.step-detail .warn{font-size:11px;color:var(--rose);font-weight:500;margin-top:4px;}
+.step-detail .note{font-size:11px;color:var(--amber);font-weight:500;margin-top:4px;}
+.step-icon{position:absolute;top:10px;right:10px;font-size:14px;opacity:.6;}
+
+/* STEP VARIANTS */
+.step.decision{border-color:var(--gold);border-style:dashed;}
+.step.decision .step-title::before{content:'◆ ';color:var(--gold);}
+.step.system-step{border-color:var(--teal);}
+.step.system-step .step-num{color:var(--teal);}
+.step.alert-step{border-color:var(--rose);}
+.step.ok-step{border-color:var(--green);}
+
+/* ARROW */
+.arrow{display:flex;align-items:center;color:var(--muted);font-size:18px;padding:0 2px;align-self:center;flex-shrink:0;}
+
+/* CONNECTOR */
+.connector{display:flex;justify-content:center;padding:4px 0;color:var(--border);font-size:20px;}
+
+/* LEGEND */
+.legend-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;padding:14px 18px;background:white;border:1px solid var(--border);border-radius:10px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--slate);}
+.legend-swatch{width:14px;height:14px;border-radius:3px;flex-shrink:0;}
+
+/* GAPS SECTION */
+.gaps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:8px;}
+.gap-card{background:white;border:1.5px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow);}
+.gap-card.high{border-left:4px solid var(--rose);}
+.gap-card.med{border-left:4px solid var(--amber);}
+.gap-card.low{border-left:4px solid var(--green);}
+.gap-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.gap-tag.high{color:var(--rose);}
+.gap-tag.med{color:var(--amber);}
+.gap-tag.low{color:var(--green);}
+.gap-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.gap-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+.gap-action{font-size:11.5px;color:var(--teal);font-weight:600;margin-top:8px;}
+
+/* ROLES TABLE */
+.roles-table{width:100%;border-collapse:collapse;margin-top:8px;background:white;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+.roles-table th{background:var(--navy);color:white;padding:10px 16px;font-size:12px;text-align:left;font-weight:600;}
+.roles-table td{padding:10px 16px;font-size:12.5px;border-bottom:1px solid var(--border);vertical-align:top;}
+.roles-table tr:last-child td{border-bottom:none;}
+.roles-table tr:hover td{background:var(--navy-light);}
+.pill{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;}
+.pill-yegi{background:var(--green-light);color:var(--green);}
+.pill-hod{background:var(--purple-light);color:var(--purple);}
+.pill-staff{background:var(--gold-light);color:var(--gold);}
+.pill-system{background:var(--teal-light);color:var(--teal);}
+.pill-caroll{background:var(--rose-light);color:var(--rose);}
+.pill-shared{background:var(--navy-light);color:var(--navy);}
+
+/* OVERVIEW CARDS */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:28px;}
+.ov-card{background:white;border:1.5px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow);cursor:pointer;transition:all .2s;}
+.ov-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.ov-icon{font-size:26px;margin-bottom:10px;}
+.ov-title{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.ov-desc{font-size:12px;color:var(--muted);line-height:1.4;}
+.ov-steps{font-size:11px;color:var(--teal);font-weight:600;margin-top:8px;}
+
+/* DIVIDER */
+.flow-divider{height:1px;background:var(--border);margin:6px 0;}
+
+/* CLICK HINT */
+.click-hint{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:16px;}
+
+@media(max-width:680px){
+  .header{padding:20px 20px 16px;}
+  .tab-panel{padding:24px 20px 40px;}
+  .tab-nav{padding:0 20px;}
+  .flow-row{grid-template-columns:100px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>CKP Digital — HR Department Process Flowcharts</h1>
+      <p>Human Resources · Payroll &amp; People Operations · FY2026/27</p>
+      <div class="header-badges">
+        <span class="badge">HR-PROC-001 to 006</span>
+        <span class="badge gold">DRAFT — Pending Yegi Validation</span>
+        <span class="badge">System: HR Easily</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="draft-banner">DRAFT — All processes to be reviewed and validated with Yegi before implementation. Steps marked ⚠ are inferred from standard practice and must be confirmed.</div>
+
+<div class="tab-nav">
+  <div style="display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;white-space:nowrap;border-right:2px solid var(--border);margin-right:4px;">PART 1</div>
+  <button class="tab-btn active" onclick="showTab(&#39;overview&#39;,this)"><span class="tab-dot" style="background:#1A3560"></span>Overview</button>
+  <button class="tab-btn" onclick="showTab(&#39;recruitment&#39;,this)"><span class="tab-dot" style="background:#1E7D52"></span>Recruitment</button>
+  <button class="tab-btn" onclick="showTab(&#39;onboarding&#39;,this)"><span class="tab-dot" style="background:#0B7B7B"></span>Onboarding</button>
+  <button class="tab-btn" onclick="showTab(&#39;payroll&#39;,this)"><span class="tab-dot" style="background:#C8962A"></span>Payroll</button>
+  <button class="tab-btn" onclick="showTab(&#39;leave&#39;,this)"><span class="tab-dot" style="background:#6B3FA0"></span>Leave</button>
+  <button class="tab-btn" onclick="showTab(&#39;offboarding&#39;,this)"><span class="tab-dot" style="background:#C0392B"></span>Offboarding</button>
+  <div style="display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;white-space:nowrap;border-left:2px solid var(--border);border-right:2px solid var(--border);margin:0 4px;">PART 2</div>
+  <button class="tab-btn" onclick="showTab(&#39;workforce&#39;,this)"><span class="tab-dot" style="background:#1E7D52"></span>Workforce Costs</button>
+  <button class="tab-btn" onclick="showTab(&#39;intern-pipeline&#39;,this)"><span class="tab-dot" style="background:#0B7B7B"></span>Intern Pipeline</button>
+  <button class="tab-btn" onclick="showTab(&#39;intern-prog&#39;,this)"><span class="tab-dot" style="background:#0B7B7B"></span>Intern Programme</button>
+  <button class="tab-btn" onclick="showTab(&#39;hr-records&#39;,this)"><span class="tab-dot" style="background:#1A3560"></span>HR Records</button>
+  <button class="tab-btn" onclick="showTab(&#39;hrdc&#39;,this)"><span class="tab-dot" style="background:#C8962A"></span>HRDC</button>
+  <button class="tab-btn" onclick="showTab(&#39;disciplinary&#39;,this)"><span class="tab-dot" style="background:#C0392B"></span>Disciplinary</button>
+  <button class="tab-btn" onclick="showTab(&#39;appraisals&#39;,this)"><span class="tab-dot" style="background:#6B3FA0"></span>Appraisals</button>
+  <button class="tab-btn" onclick="showTab(&#39;statutory&#39;,this)"><span class="tab-dot" style="background:#D4720A"></span>Statutory Calendar</button>
+  <button class="tab-btn" onclick="showTab(&#39;handbook&#39;,this)"><span class="tab-dot" style="background:#1A6B72"></span>Handbook Review</button>
+  <button class="tab-btn" onclick="showTab(&#39;hr-reporting&#39;,this)"><span class="tab-dot" style="background:#1E7D52"></span>HR Reporting</button>
+  <button class="tab-btn" onclick="showTab(&#39;culture&#39;,this)"><span class="tab-dot" style="background:#E8B84B"></span>Culture &amp; Experience</button>
+  <button class="tab-btn" onclick="showTab(&#39;gaps&#39;,this)"><span class="tab-dot" style="background:#D4720A"></span>Gaps &amp; Actions</button>
+</div>
+
+<!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
+<div id="overview" class="tab-panel active">
+  <div class="section-head">
+    <h2>HR Function Overview</h2>
+    <p>Six core processes covering the full employee lifecycle at CKP Digital. Click any process card to jump to that tab.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi (HR Executive)</span>
+      <span class="meta-tag"><strong>Incoming:</strong> HR Manager — June 2026</span>
+      <span class="meta-tag"><strong>Headcount:</strong> ~35 staff, target 50 by end FY2026/27</span>
+      <span class="meta-tag"><strong>Core System:</strong> HR Easily</span>
+    </div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card" onclick="showTab(&#39;recruitment&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[1])">
+      <div class="ov-icon">🎯</div>
+      <div class="ov-title">Recruitment &amp; Hiring</div>
+      <div class="ov-desc">From headcount request to offer accepted. Includes SRF, screening, interviews, and offer.</div>
+      <div class="ov-steps">HR-PROC-001 · 15 steps · Portals + Agencies + Social + Health Screening</div>
+    </div>
+    <div class="ov-card" onclick="showTab(&#39;onboarding&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[2])">
+      <div class="ov-icon">🚀</div>
+      <div class="ov-title">Onboarding</div>
+      <div class="ov-desc">Day 1 through end of probation. Documentation, system access, orientation, and confirmation.</div>
+      <div class="ov-steps">HR-PROC-002 · 10 steps · 3-month probation cycle</div>
+    </div>
+    <div class="ov-card" onclick="showTab(&#39;payroll&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[3])">
+      <div class="ov-icon">💰</div>
+      <div class="ov-title">Payroll Processing</div>
+      <div class="ov-desc">Monthly payroll via HR Easily. Includes OT, claims, EPF/SOCSO/PCB, and payslip distribution.</div>
+      <div class="ov-steps">HR-PROC-003 · 12 steps · Monthly cycle · Deadline: 25th</div>
+    </div>
+    <div class="ov-card" onclick="showTab(&#39;leave&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[4])">
+      <div class="ov-icon">📅</div>
+      <div class="ov-title">Leave Management</div>
+      <div class="ov-desc">Application, HOD approval, system update, and leave balance tracking via HR Easily.</div>
+      <div class="ov-steps">HR-PROC-004 · 7 steps · All leave types</div>
+    </div>
+    <div class="ov-card" onclick="showTab(&#39;offboarding&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[5])">
+      <div class="ov-icon">🔄</div>
+      <div class="ov-title">Offboarding</div>
+      <div class="ov-desc">Resignation receipt through final pay and system deactivation. Includes knowledge transfer.</div>
+      <div class="ov-steps">HR-PROC-005 · 10 steps · Notice period dependent</div>
+    </div>
+    <div class="ov-card" onclick="showTab(&#39;gaps&#39;,document.querySelectorAll(&#39;.tab-btn&#39;)[6])">
+      <div class="ov-icon">⚠️</div>
+      <div class="ov-title">Gaps &amp; Actions</div>
+      <div class="ov-desc">8 process gaps identified. Prioritised by risk level for Yegi and incoming HR Manager to action.</div>
+      <div class="ov-steps">3 High · 3 Medium · 2 Low</div>
+    </div>
+  </div>
+
+  <div class="section-head" style="margin-top:8px;">
+    <h2>Role Responsibilities at a Glance</h2>
+    <p>Who does what across all six HR processes</p>
+  </div>
+  <table class="roles-table">
+    <tbody><tr>
+      <th>Role</th><th>Process Involvement</th><th>System Access</th>
+    </tr>
+    <tr>
+      <td><span class="pill pill-yegi">Yegi</span> HR Executive</td>
+      <td>Primary owner of all HR processes — execution, documentation, compliance, system management</td>
+      <td>HR Easily (admin), Lark, Email</td>
+    </tr>
+    <tr>
+      <td><span class="pill pill-hod">HOD</span> Dept Heads</td>
+      <td>Initiates SRF, interviews candidates, approves leave, receives payslip confirmation, signs clearance</td>
+      <td>HR Easily (approver), Lark</td>
+    </tr>
+    <tr>
+      <td><span class="pill pill-staff">Staff</span> All Employees</td>
+      <td>Submits leave applications, claims, updates personal info, receives payslips</td>
+      <td>HR Easily (self-service)</td>
+    </tr>
+    <tr>
+      <td><span class="pill pill-caroll">Caroll</span> GM</td>
+      <td>Approves headcount requests (SRF), reviews final candidates, signs off HR reports, handles escalations</td>
+      <td>HR Easily (view), Lark</td>
+    </tr>
+    <tr>
+      <td><span class="pill pill-shared">Jeremy</span> Founder</td>
+      <td>Final approval on new hires (senior roles), salary band decisions, terminations</td>
+      <td>As needed</td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- ═══════════════════════════════ RECRUITMENT ═══════════════════════════════ -->
+<div id="recruitment" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-001 — Recruitment &amp; Hiring</h2>
+    <p>From headcount request through sourcing, interviews, reference check, health screening, and offer. References Staff Requisition Form (CKP-HR-SRF-001) and Role Persona Cards (CKP-HR-RPC-001).</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi</span>
+      <span class="meta-tag"><strong>Approver:</strong> Caroll (SRF) + Jeremy (final hire)</span>
+      <span class="meta-tag"><strong>Target TAT:</strong> 30–45 days from SRF to joining</span>
+      <span class="meta-tag"><strong>Channels:</strong> Portals + Agencies + Social Media</span>
+      <span class="meta-tag"><strong>Agencies:</strong> Intellipro, Career Horizons</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-swatch" style="background:#E8F6EF;border:1.5px solid #1E7D52"></div>Yegi (HR)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#F0E8FF;border:1.5px solid #6B3FA0"></div>HOD (Dept Head)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FDEDEC;border:1.5px solid #C0392B"></div>Caroll (GM)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:white;border:1.5px dashed #C8962A"></div>Decision Point</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E0F4F4;border:1.5px solid #0B7B7B"></div>System / External Party</div>
+  </div>
+
+  <div class="flow-grid">
+
+    <!-- STEP 1–2: Headcount Request -->
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">Identify Headcount Need</div>
+          <div class="step-icon">👤</div>
+          <div class="step-detail">
+            <p>HOD identifies staffing gap — new role or backfill. Documents: role title, department, reporting line, reason, urgency, and proposed start date.</p>
+            <p class="note">⚠ Must use SRF (CKP-HR-SRF-001) — verbal requests not accepted.</p>
+            <div class="sla">Trigger: Anytime. Target: SRF submitted within 2 working days of decision.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">Complete &amp; Submit SRF</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>HOD completes Staff Requisition Form (CKP-HR-SRF-001): all sections including Section E1 (Standard Persona Baseline) and E2 (Role-Specific Persona, referencing RPC-001). Submits to Yegi via Lark.</p>
+            <p class="warn">Incomplete SRFs returned to HOD within 1 working day. No sourcing begins until SRF is complete and approved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 3: GM Approval -->
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll (GM)</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">SRF Review &amp; Approval</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Caroll reviews SRF: justification, headcount budget, salary range, reporting structure, and priority level. Approves or returns with comments.</p>
+            <p><strong>If approved:</strong> Yegi proceeds to sourcing immediately.<br><strong>If rejected:</strong> HOD notified with reason. SRF revised and resubmitted if role still needed.</p>
+            <div class="sla">Decision within 2 working days of receipt.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 4: Job Posting -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4A</div>
+          <div class="step-title">Post on Job Portals</div>
+          <div class="step-icon">🖥️</div>
+          <div class="step-detail">
+            <p>Yegi prepares job description based on approved SRF and Persona Cards, then posts on all active portals simultaneously:</p>
+            <p><strong>Portals:</strong> A Job Thing, Indeed, JobStreet, CKP Website careers page.</p>
+            <p>Ad copy must include: role title, key responsibilities, required background (outsourcing/agency mandatory), salary range (optional), and application instructions.</p>
+            <p class="warn">Candidates without outsourcing/agency background — auto-rejected at screening stage. Do not proceed regardless of other qualifications.</p>
+            <div class="sla">All portal ads live within 3 working days of SRF approval.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4B</div>
+          <div class="step-title">Post on Social Media</div>
+          <div class="step-icon">📲</div>
+          <div class="step-detail">
+            <p>Yegi coordinates with BD/marketing to publish job posts on CKP's social media channels: Instagram, Facebook, LinkedIn.</p>
+            <p>LinkedIn post targets professionals directly — include role, key requirements, and "DM or apply via link." Instagram and Facebook posts to be visually branded (use CKP hiring template if available).</p>
+            <p class="note">⚠ Social media posts may generate direct messages — Yegi to monitor and redirect applicants to formal portal or email submission.</p>
+            <div class="sla">Social posts live within 1 working day of portal posting.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4C</div>
+          <div class="step-title">Engage Recruitment Agencies</div>
+          <div class="step-icon">🤝</div>
+          <div class="step-detail">
+            <p>Yegi sends job brief to CKP's retained recruitment agencies: <strong>Intellipro</strong> and <strong>Career Horizons</strong>. Brief includes: role title, JD summary, mandatory requirements, salary range, urgency level, and interview process outline.</p>
+            <p>Agencies to submit CVs directly to Yegi. Yegi manages all agency communication — HODs do not liaise with agencies directly.</p>
+            <p class="note">Agency-submitted CVs go through the same screening criteria as direct applicants. No bypass of Persona Card requirements.</p>
+            <div class="sla">Brief sent to agencies same day as portal posting. Request CVs within 5 working days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 5: Screening -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5</div>
+          <div class="step-title">Screen &amp; Shortlist CVs</div>
+          <div class="step-icon">📄</div>
+          <div class="step-detail">
+            <p>Yegi consolidates all CVs from portals, social media, and agency submissions into a single tracking sheet. Screens against: SRF role requirements, mandatory outsourcing/agency background, Persona Card criteria (CKP-HR-RPC-001).</p>
+            <p>Prepares colour-coded shortlist Excel (as per CKP screening standard): Green = proceed, Amber = borderline/query, Red = reject with reason.</p>
+            <p>Minimum 3 shortlisted candidates per role before proceeding to interview. If fewer than 3 qualified candidates, extend ad duration or brief agencies again — do not lower the bar.</p>
+            <p class="warn">Auto-reject: commercial/in-house background only. No exceptions without Caroll's explicit approval.</p>
+            <div class="sla">Shortlist compiled and sent to HOD within 5 working days of CV collection close.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 6–7: Round 1 Interview -->
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD + Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6</div>
+          <div class="step-title">Round 1 Interview</div>
+          <div class="step-icon">💬</div>
+          <div class="step-detail">
+            <p>Yegi schedules and conducts Round 1 together with HOD. Format is flexible depending on candidate availability and urgency:</p>
+            <p><strong>Virtual:</strong> Google Meet or Teams — suitable for out-of-state candidates or time-sensitive roles. Yegi to confirm platform with candidate in advance.</p>
+            <p><strong>Physical:</strong> At CKP office — preferred for final-stage candidates and roles involving frequent client interaction.</p>
+            <p>Both interviewers assess against Persona Card criteria and complete scoring sheet (to be formalised — see Gaps). Yegi takes notes and documents key observations.</p>
+            <div class="sla">Round 1 scheduled within 5 working days of shortlist approval by HOD.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7</div>
+          <div class="step-title">Round 1 Outcome</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p><strong>Proceed to Round 2:</strong> HOD and Yegi aligned — candidate moves forward.<br><strong>Reject:</strong> Yegi notifies candidate professionally within 3 working days. Reason documented internally. Next shortlisted candidate called up.<br><strong>Hold:</strong> Candidate parked pending other interviews completing — Yegi to manage timeline carefully.</p>
+            <div class="sla">Round 1 decision communicated to Yegi by HOD within 1 working day of interview.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 8: Round 2 Interview -->
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll / Jeremy</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 8</div>
+          <div class="step-title">Round 2 Interview</div>
+          <div class="step-icon">🎯</div>
+          <div class="step-detail">
+            <p>All candidates go through a second round of interview — this is standard for all hires at CKP, not just senior roles.</p>
+            <p><strong>Staff / Executive level:</strong> Round 2 with Caroll (GM). Format: virtual or physical depending on schedule.</p>
+            <p><strong>Manager level and above:</strong> Round 2 with Caroll, and Jeremy makes the final call.</p>
+            <p>Round 2 focuses on culture fit, values alignment, communication style, and long-term potential within CKP. Yegi attends to observe and take notes.</p>
+            <div class="sla">Round 2 scheduled within 5 working days of Round 1 clearance.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 9</div>
+          <div class="step-title">Round 2 Outcome</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p><strong>Approved to proceed:</strong> Yegi moves to reference check.<br><strong>Rejected:</strong> Return to shortlist. If no suitable candidates remain, re-open sourcing.<br><strong>Undecided:</strong> Additional round or assessment may be requested — Caroll's call.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 10: Reference Check -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 10</div>
+          <div class="step-title">Reference Check</div>
+          <div class="step-icon">🔎</div>
+          <div class="step-detail">
+            <p>Yegi conducts reference check on the selected candidate before any offer is issued. Minimum 2 references required — preferably former direct supervisors, not peers or personal contacts.</p>
+            <p>Reference check covers: employment dates and role confirmation, work performance and reliability, reason for leaving, conduct and professionalism, would the referee rehire the candidate?</p>
+            <p>Yegi documents all reference responses in writing and flags any concerns to Caroll before proceeding.</p>
+            <p class="warn">Negative or evasive references must be escalated to Caroll. Do not proceed to offer without Caroll's sign-off if concerns exist.</p>
+            <div class="sla">Reference check completed within 3 working days of Round 2 clearance. Do not issue offer until references are cleared.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 11: Offer Letter -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 11</div>
+          <div class="step-title">Prepare &amp; Issue Offer Letter</div>
+          <div class="step-icon">📩</div>
+          <div class="step-detail">
+            <p>Yegi prepares conditional offer letter. Salary confirmed against approved SRF band. Letter includes: role title, salary, reporting line, proposed joining date, probation period (3 months standard), and a clear condition — offer is subject to satisfactory health screening.</p>
+            <p class="warn">No verbal offers. All offers in writing only. Offer letter must explicitly state the health screening condition.</p>
+            <div class="sla">Offer issued within 2 working days of reference check clearance. Candidate given 3 working days to accept.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 12</div>
+          <div class="step-title">Offer Accepted?</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p><strong>Yes:</strong> Candidate signs and returns offer letter. Yegi proceeds to health screening arrangement.<br><strong>Counter / Negotiation:</strong> Escalate to Caroll. Any salary adjustment requires Caroll approval before Yegi revises offer.<br><strong>No:</strong> Yegi documents outcome and returns to shortlist or restarts sourcing.</p>
+            <div class="sla">Signed acceptance required in writing before health screening is arranged.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 13: Health Screening -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 13</div>
+          <div class="step-title">Arrange Health Screening</div>
+          <div class="step-icon">🏥</div>
+          <div class="step-detail">
+            <p>Yegi issues health screening referral letter and arranges appointment at CKP's designated panel clinic: <strong>Gleneagles</strong>.</p>
+            <p>Standard pre-employment health screening covers: full blood count, liver and kidney function, blood glucose, chest X-ray, urine FEME, and any role-specific requirements.</p>
+            <p>Cost borne by CKP. Yegi to provide candidate with clinic details, referral letter, and date/time confirmation.</p>
+            <div class="sla">Health screening arranged within 3 working days of offer acceptance. Results expected within 5–7 working days from screening date.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 14</div>
+          <div class="step-title">Health Screening Result</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p><strong>FIT — All clear:</strong> Yegi confirms joining date with candidate. Triggers Onboarding process (HR-PROC-002). HOD informed.</p>
+            <p><strong>UNFIT — Fail:</strong> Offer is null and void. Yegi notifies candidate in writing citing health screening outcome. Caroll informed. Yegi returns to shortlist or restarts sourcing.</p>
+            <p><strong>BORDERLINE — Requires review:</strong> Escalate to Caroll. Medical opinion may be sought before final decision. Do not confirm joining date until resolved.</p>
+            <p class="warn">Offer null and void on health screening failure — this is non-negotiable and must be stated clearly in the offer letter.</p>
+            <div class="sla">Decision communicated to candidate within 2 working days of receiving screening results.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- STEP 15: Onboarding Trigger -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi (HR)</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 15</div>
+          <div class="step-title">Confirm Joining &amp; Trigger Onboarding</div>
+          <div class="step-icon">🚀</div>
+          <div class="step-detail">
+            <p>Health screening passed. Yegi sends written confirmation of joining date to candidate. Notifies HOD and William (IT) of incoming hire. Closes recruitment record — documents full cycle in HR tracking file: source channel, agency (if any), rounds completed, reference check outcome, health screening result.</p>
+            <p>Formally triggers HR-PROC-002 (Onboarding) — pre-joining checklist begins D-5 from joining date.</p>
+            <div class="sla">Joining confirmation issued within 2 working days of health screening clearance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ONBOARDING ═══════════════════════════════ -->
+<div id="onboarding" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-002 — Onboarding</h2>
+    <p>From offer acceptance to end of probation and confirmation. Covers documentation, system setup, orientation, and 3-month check-ins.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi</span>
+      <span class="meta-tag"><strong>Support:</strong> HOD (orientation), William (system access)</span>
+      <span class="meta-tag"><strong>Probation:</strong> 3 months standard</span>
+      <span class="meta-tag"><strong>System:</strong> HR Easily + Lark</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-swatch" style="background:#E8F6EF;border:1.5px solid #1E7D52"></div>Yegi (HR)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#F0E8FF;border:1.5px solid #6B3FA0"></div>HOD</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FDEDEC;border:1.5px solid #C0392B"></div>Caroll (GM)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E0F4F4;border:1.5px solid #0B7B7B"></div>William (IT)</div>
+  </div>
+
+  <div class="flow-grid">
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · Pre-joining (D-5)</div>
+          <div class="step-title">Prepare Onboarding Pack</div>
+          <div class="step-icon">📦</div>
+          <div class="step-detail">
+            <p>Yegi prepares: Employment Contract, Employee Handbook acknowledgement, EPF/SOCSO/PCB forms, bank account details form, emergency contact form, NDA (if applicable).</p>
+            <p>Sends joining instructions to new hire via email: reporting time, dress code, what to bring, parking.</p>
+            <div class="sla">Completed 5 days before joining date.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · Pre-joining (D-3)</div>
+          <div class="step-title">Setup HR Easily Profile</div>
+          <div class="step-icon">💻</div>
+          <div class="step-detail">
+            <p>Yegi creates employee profile in HR Easily: personal details, role, department, reporting manager, salary, leave entitlement, probation end date.</p>
+            <p class="note">⚠ Probation end date must be set accurately — triggers confirmation review alert.</p>
+            <div class="sla">Profile active before Day 1.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane" style="background:#E0F4F4;">William (IT)</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Pre-joining (D-2)</div>
+          <div class="step-title">System &amp; Access Setup</div>
+          <div class="step-icon">🔐</div>
+          <div class="step-detail">
+            <p>William provisions: CKP email account, Lark account and team assignment, Xero/accounting software access (role-dependent), server folder access (as per department standard).</p>
+            <p class="warn">Access levels must match role — do not grant admin access by default.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi + HOD</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · Day 1 AM</div>
+          <div class="step-title">Welcome &amp; Documentation</div>
+          <div class="step-icon">🌟</div>
+          <div class="step-detail">
+            <p>Yegi greets new hire. Completes all documentation signing: contract, handbook, statutory forms. New hire signs and returns all forms. Yegi retains originals, provides copies to employee.</p>
+            <div class="sla">All forms signed and filed by end of Day 1.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Day 1 PM</div>
+          <div class="step-title">Orientation &amp; HOD Handover</div>
+          <div class="step-icon">🗺️</div>
+          <div class="step-detail">
+            <p>Yegi covers: CKP overview, culture, Lark usage, leave/payroll process, HR Easily self-service. HOD takes over: team intro, role brief, 30-day plan, buddy assignment (if applicable).</p>
+            <p class="note">⚠ Orientation checklist to be formalised — see Gaps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6 · Week 2</div>
+          <div class="step-title">Day 7 Check-In</div>
+          <div class="step-icon">💬</div>
+          <div class="step-detail">
+            <p>Yegi conducts brief check-in with new hire (15 min): settling in, any issues, access/system problems. Documents any issues and escalates to HOD or William as needed.</p>
+            <div class="sla">Within first 7 calendar days.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7 · Month 1</div>
+          <div class="step-title">Month 1 Probation Review</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>HOD submits Month 1 probation feedback to Yegi. Yegi records in HR Easily. If concerns raised, Caroll informed. Performance issue action plan initiated if needed.</p>
+            <div class="sla">Due by end of Month 1.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 8 · Month 2</div>
+          <div class="step-title">Month 2 Probation Review</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>Same as Month 1. If cumulative concerns exist, Yegi escalates to Caroll for early probation termination decision or extension decision.</p>
+            <div class="sla">Due by end of Month 2.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll (GM)</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 9 · Month 3</div>
+          <div class="step-title">Final Probation Decision</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>HOD submits final probation assessment. Yegi prepares summary. Caroll reviews and decides:</p>
+            <p><strong>Confirm:</strong> Employment confirmed. Yegi issues confirmation letter.<br><strong>Extend:</strong> Additional 1–3 months, new targets set.<br><strong>Terminate:</strong> As per Employment Act, Yegi handles exit process per HR-PROC-005.</p>
+            <div class="sla">Decision by Day 85 at latest. Confirmation letter issued Day 90.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 10 · Day 90</div>
+          <div class="step-title">Confirmation &amp; Record Update</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Yegi issues Confirmation Letter. Updates HR Easily: employment status → Confirmed, updates salary if increment was tied to confirmation, sets next appraisal date. Files all probation review records.</p>
+            <div class="sla">HR Easily updated same day as letter issuance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAYROLL ═══════════════════════════════ -->
+<div id="payroll" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-003 — Payroll Processing</h2>
+    <p>Monthly payroll cycle via HR Easily. Covers OT claims, statutory deductions (EPF/SOCSO/EIS/PCB), final run verification, and payslip distribution.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi</span>
+      <span class="meta-tag"><strong>Approver:</strong> Caroll (GM)</span>
+      <span class="meta-tag"><strong>Submission Deadline:</strong> 25th of each month</span>
+      <span class="meta-tag"><strong>System:</strong> HR Easily</span>
+      <span class="meta-tag"><strong>Statutory:</strong> EPF by 15th, SOCSO/EIS by 15th, PCB by 15th (following month)</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-swatch" style="background:#E8F6EF;border:1.5px solid #1E7D52"></div>Yegi (HR)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FDEDEC;border:1.5px solid #C0392B"></div>Caroll (GM)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E0F4F4;border:1.5px solid #0B7B7B"></div>HR Easily (System)</div>
+  </div>
+
+  <div class="flow-grid">
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Day 15–18</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · Day 15</div>
+          <div class="step-title">Collect Variable Pay Data</div>
+          <div class="step-icon">📥</div>
+          <div class="step-detail">
+            <p>Yegi collects all variable items for the month: OT claims (verified against OT approval records), claims (medical, transport, meal allowance), new joiner / leaver prorations, salary changes (confirmed increments, adjustments).</p>
+            <p class="warn">OT: verify against approved OT forms before keying. RM30 meal allowance and Grab fare per CKP OT policy.</p>
+            <div class="sla">All inputs collected by Day 18 of payroll month.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · Day 18–20</div>
+          <div class="step-title">Key into HR Easily</div>
+          <div class="step-icon">⌨️</div>
+          <div class="step-detail">
+            <p>Yegi keys all variable data into HR Easily payroll module: OT hours, allowances, deductions, new/departed staff changes. Confirms all employee records are current (no pending profile updates).</p>
+            <p class="note">⚠ Check for mid-month joiners and resignees — prorate pay accurately.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane system" style="background:#E0F4F4;">HR Easily · Day 20</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Day 20</div>
+          <div class="step-title">Run Payroll Simulation</div>
+          <div class="step-icon">🖥️</div>
+          <div class="step-detail">
+            <p>Yegi runs the payroll simulation (draft run) in HR Easily. System calculates: gross pay, EPF (employee + employer), SOCSO, EIS, PCB, net pay per employee.</p>
+            <p>Yegi exports payroll summary report and checks: total headcount matches, gross pay variance vs prior month flagged, any nil/zero pay line items.</p>
+            <div class="sla">Simulation completed by Day 20.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · Day 20–21</div>
+          <div class="step-title">Spot Check &amp; Variance Review</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Yegi reviews: any employee with variance &gt;10% vs prior month — investigate cause. Any new/departed employee — confirm proration calculation. EPF/SOCSO rates correct for each salary band.</p>
+            <p><strong>If issues found:</strong> Correct in HR Easily and re-simulate.<br><strong>If clean:</strong> Proceed to GM approval.</p>
+            <p class="warn">Never finalise payroll with unresolved variances.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll · Day 22</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Day 22</div>
+          <div class="step-title">GM Approval</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Yegi submits payroll summary to Caroll for approval. Caroll reviews: total payroll cost vs budget, headcount vs last month, any unusual items.</p>
+            <p><strong>Approved:</strong> Yegi proceeds to final run.<br><strong>Queries:</strong> Yegi resolves and resubmits within 1 working day.</p>
+            <div class="sla">Approval within 1 working day of submission. Final approval by Day 22.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Day 23–25</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6 · Day 23</div>
+          <div class="step-title">Finalise Payroll in HR Easily</div>
+          <div class="step-icon">🔒</div>
+          <div class="step-detail">
+            <p>Yegi locks and finalises payroll run in HR Easily. No further changes permitted after this point.</p>
+            <p class="warn">Any post-finalisation corrections require a supplementary payment next cycle with Caroll approval.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7 · Day 24</div>
+          <div class="step-title">Bank Transfer Preparation</div>
+          <div class="step-icon">🏦</div>
+          <div class="step-detail">
+            <p>Yegi generates bank transfer file from HR Easily. Submits to Finance (Jillian) for payment processing. Finance verifies total matches approved payroll summary before releasing.</p>
+            <div class="sla">Bank file submitted to Finance by Day 24. Payment to clear by Day 25.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 8 · Day 25</div>
+          <div class="step-title">Distribute Payslips</div>
+          <div class="step-icon">📨</div>
+          <div class="step-detail">
+            <p>HR Easily distributes payslips to employees via system (email or self-service portal). Yegi confirms all payslips delivered. Any employee reporting non-receipt — Yegi resends within 1 working day.</p>
+            <div class="sla">Payslips out same day as salary payment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Post-Payroll</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 9 · By 15th Next Month</div>
+          <div class="step-title">EPF Submission</div>
+          <div class="step-icon">📑</div>
+          <div class="step-detail">
+            <p>Yegi submits EPF (KWSP) payment via i-Akaun using data generated from HR Easily. Confirms contribution rates: employee (11% standard or 9% option), employer (13% below RM5K / 12% above). Obtains payment receipt and files.</p>
+            <div class="sla">Deadline: 15th of following month. Late penalty applies.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 10 · By 15th Next Month</div>
+          <div class="step-title">SOCSO &amp; EIS Submission</div>
+          <div class="step-icon">📑</div>
+          <div class="step-detail">
+            <p>Yegi submits PERKESO (SOCSO + EIS) via ASSIST portal. Verifies contribution schedule: employees earning above RM4,000 — SOCSO capped, EIS continues. Files payment confirmation.</p>
+            <div class="sla">Deadline: 15th of following month.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 11 · By 15th Next Month</div>
+          <div class="step-title">PCB / MTD Submission</div>
+          <div class="step-icon">📑</div>
+          <div class="step-detail">
+            <p>Yegi submits PCB (Potongan Cukai Bulanan) via e-PCB or MyTax. Verifies PCB amounts per employee match HR Easily calculations. Files submission confirmation.</p>
+            <p class="note">⚠ EA forms due by end of February annually — plan ahead from December.</p>
+            <div class="sla">Deadline: 15th of following month.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Month-End</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 12 · End of Month</div>
+          <div class="step-title">Payroll Reconciliation &amp; Filing</div>
+          <div class="step-icon">📁</div>
+          <div class="step-detail">
+            <p>Yegi files all payroll records in designated server folder. Sends monthly payroll summary to Caroll and Jillian (Finance) for management accounts. Reconciles total payroll cost against Finance records.</p>
+            <p class="warn">Discrepancy between payroll total and Finance posting — must be resolved same month.</p>
+            <div class="sla">Filed within 3 working days of payslip distribution.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ LEAVE ═══════════════════════════════ -->
+<div id="leave" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-004 — Leave Management</h2>
+    <p>All leave types managed via HR Easily self-service. Covers application, HOD approval, system tracking, and exception handling.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>System:</strong> HR Easily (all leave types)</span>
+      <span class="meta-tag"><strong>Leave Types:</strong> Annual, Medical, Emergency, Maternity/Paternity, Unpaid, Replacement</span>
+      <span class="meta-tag"><strong>Advance Notice:</strong> Annual — min 3 days. Emergency — same day notification.</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="flow-grid">
+
+    <div class="flow-row">
+      <div class="flow-lane staff">Staff</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">Submit Leave Application</div>
+          <div class="step-icon">📱</div>
+          <div class="step-detail">
+            <p>Employee logs into HR Easily. Selects leave type, date(s), duration, reason (optional for annual, required for emergency/unpaid). Submits application — system routes automatically to reporting HOD for approval.</p>
+            <p class="note">⚠ No WhatsApp or verbal leave applications accepted as formal record.</p>
+            <div class="sla">Annual leave: min 3 working days in advance. Medical/Emergency: same day via HR Easily.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">HOD Review &amp; Decision</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>HOD receives notification via HR Easily. Reviews: leave balance available, team coverage (no critical deadlines), leave reason (for medical/emergency).</p>
+            <p><strong>Approve:</strong> System updates leave balance automatically.<br><strong>Reject:</strong> HOD must state reason in system. Employee notified.</p>
+            <div class="sla">Decision within 1 working day for annual leave. Same day for medical/emergency.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane system" style="background:#E0F4F4;">HR Easily</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">System Updates Balance</div>
+          <div class="step-icon">🖥️</div>
+          <div class="step-detail">
+            <p>Upon HOD approval, HR Easily: deducts leave entitlement from employee balance, updates leave calendar, generates leave record. Employee receives approval notification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane staff">Staff (Medical)</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · Medical Leave Only</div>
+          <div class="step-title">MC Submission</div>
+          <div class="step-icon">🏥</div>
+          <div class="step-detail">
+            <p>For medical leave: employee must submit MC (Medical Certificate) from registered clinic/hospital to Yegi within 2 working days of return. Yegi uploads MC to HR Easily employee file.</p>
+            <p class="warn">No MC submitted within 2 working days → leave converted to unpaid leave. Yegi to inform employee before converting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Monthly</div>
+          <div class="step-title">Monthly Leave Report</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>Yegi generates monthly leave report from HR Easily. Reviews: high leave users (&gt;2 days medical/month consistently — flag to Caroll), leave balance status for payroll purposes (carries into payroll for unpaid deductions).</p>
+            <div class="sla">Report to Caroll by 3rd working day of following month.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6</div>
+          <div class="step-title">Excess Leave / No Balance?</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>If employee applies for leave with zero balance:</p>
+            <p><strong>Approved by HOD as unpaid:</strong> Yegi flags to payroll for deduction in current month.<br><strong>Rejected:</strong> Employee must report to work. If absent — treated as absent without official leave (AWOL).</p>
+            <p class="warn">AWOL: Yegi to notify Caroll same day. Escalates to disciplinary process if repeated.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7 · Year-End</div>
+          <div class="step-title">Annual Leave Carry-Forward &amp; Forfeit</div>
+          <div class="step-icon">📅</div>
+          <div class="step-detail">
+            <p>At financial year-end, Yegi reviews all outstanding leave balances. Per CKP policy (to be confirmed with Caroll):</p>
+            <p>Carry-forward limit: typically up to 5–7 days. Excess forfeited unless approved by GM. Yegi notifies all staff of deadline and balance by December each year.</p>
+            <p class="note">⚠ Carry-forward policy to be formally documented — see Gaps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ OFFBOARDING ═══════════════════════════════ -->
+<div id="offboarding" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-005 — Offboarding</h2>
+    <p>From resignation receipt to final pay, system deactivation, and exit record. Covers voluntary resignation, termination, and mutual separation.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi</span>
+      <span class="meta-tag"><strong>Approver:</strong> Caroll (GM)</span>
+      <span class="meta-tag"><strong>Notice Period:</strong> Per contract (typically 1–3 months)</span>
+      <span class="meta-tag"><strong>Final Pay:</strong> Within 7 days of last working day (Employment Act)</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="flow-grid">
+
+    <div class="flow-row">
+      <div class="flow-lane staff">Staff</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">Submit Resignation Letter</div>
+          <div class="step-icon">📝</div>
+          <div class="step-detail">
+            <p>Employee submits written resignation to HOD and Yegi (via email or physical letter). Letter must state: intended last working day, notice period served.</p>
+            <p class="warn">Verbal resignation not accepted as formal notice. Yegi must receive written copy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll (GM)</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">Acknowledge &amp; Decide on Notice</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Caroll reviews resignation. Decides:</p>
+            <p><strong>Serve full notice:</strong> Employee works through notice period.<br><strong>Early release:</strong> Caroll approves shorter notice — Yegi calculates pay-in-lieu.<br><strong>Counter-offer (rare):</strong> Caroll discusses retention — if successful, resignation withdrawn in writing.</p>
+            <div class="sla">Acknowledgement to employee within 2 working days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Within D+3</div>
+          <div class="step-title">Prepare Clearance Checklist</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>Yegi issues clearance checklist to employee and relevant departments: laptop/equipment return (William/IT), access card return, server/system access revocation plan (William), client file handover (HOD), outstanding claims submission deadline.</p>
+            <p class="note">⚠ Clearance checklist template to be formalised — see Gaps.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · During Notice Period</div>
+          <div class="step-title">Knowledge Transfer</div>
+          <div class="step-icon">🔄</div>
+          <div class="step-detail">
+            <p>HOD oversees knowledge handover: client file documentation, in-progress work completion or handover notes, passwords/access transfer (via William). Yegi monitors KT completion — escalates to Caroll if employee uncooperative.</p>
+            <div class="sla">Minimum 70% KT complete by D-7 from last day.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Last Week</div>
+          <div class="step-title">Exit Interview</div>
+          <div class="step-icon">💬</div>
+          <div class="step-detail">
+            <p>Yegi conducts exit interview (30 min): reasons for leaving, experience at CKP, feedback on management and culture, suggestions. Documents responses. Shares anonymised themes with Caroll monthly.</p>
+            <p class="note">⚠ Exit interview template to be built — see Gaps. Currently informal.</p>
+            <div class="sla">Conducted within last 3 days of employment.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6 · Last Day AM</div>
+          <div class="step-title">Clearance Sign-Off</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>All departments sign off clearance checklist: equipment returned, access cards surrendered, all handovers complete. Yegi collects signed checklist.</p>
+            <p class="warn">Final pay NOT released if clearance is incomplete without Caroll sign-off override.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane" style="background:#E0F4F4;">William (IT)</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7 · Last Day</div>
+          <div class="step-title">Revoke All System Access</div>
+          <div class="step-icon">🔐</div>
+          <div class="step-detail">
+            <p>William deactivates on last working day (not after): CKP email, Lark account, Xero/accounting software, server folder access, any client portals. Confirms completion to Yegi in writing.</p>
+            <p class="warn">Access revocation must happen on last day — not a day later.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 8 · Post-Exit</div>
+          <div class="step-title">Calculate Final Pay</div>
+          <div class="step-icon">💰</div>
+          <div class="step-detail">
+            <p>Yegi calculates in HR Easily: salary for days worked in final month, outstanding leave encashment (if applicable per contract), any deductions (outstanding loans, unreturned items). Pay-in-lieu of notice if applicable.</p>
+            <div class="sla">Final pay calculation completed within 2 working days of last day.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 9 · Within 7 Days</div>
+          <div class="step-title">Release Final Pay</div>
+          <div class="step-icon">🏦</div>
+          <div class="step-detail">
+            <p>Final pay submitted to Finance (Jillian) for payment. Must be paid within 7 days of last working day per Employment Act Section 20. Yegi retains payment confirmation on file.</p>
+            <p class="warn">Late final pay is a statutory violation. Do not delay for any administrative reason.</p>
+            <div class="sla">Statutory deadline: 7 days from last working day.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 10 · Post-Payment</div>
+          <div class="step-title">HR Easily &amp; Record Closure</div>
+          <div class="step-icon">📁</div>
+          <div class="step-detail">
+            <p>Yegi marks employee as Resigned/Terminated in HR Easily. Archives all records. Updates headcount report. Notifies Caroll of departure for management reporting. Removes from all active team lists in Lark.</p>
+            <div class="sla">Completed within 5 working days of last day.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- WORKFORCE COST CONTROL -->
+<div id="workforce" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-006 — Workforce Cost Control</h2>
+    <p>Monthly and quarterly monitoring of staff costs, headcount, productivity (time cost), and OT against approved budget.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Reports to:</strong> Caroll (GM)</span>
+      <span class="meta-tag"><strong>Frequency:</strong> Monthly monitoring, quarterly review</span>
+      <span class="meta-tag"><strong>Source data:</strong> HR Easily + Payroll + HOD timesheets</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Monthly</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · Post-Payroll</div>
+          <div class="step-title">Extract Payroll Cost Data</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>After payroll is finalised, Yegi extracts from HR Easily: total gross payroll by department, OT cost by department, headcount by department (confirmed + probation). Compiles into monthly cost summary.</p>
+            <div class="sla">Extracted within 3 working days of payslip distribution.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">Compare Actuals vs Budget</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Yegi compares actual staff costs against approved FY budget: total payroll vs budgeted payroll, headcount vs approved headcount, OT spend vs OT budget by department.</p>
+            <p><strong>Within budget:</strong> Note and include in monthly HR report.<br><strong>Variance &gt;5%:</strong> Flag to Caroll with cause.<br><strong>Variance &gt;10%:</strong> Urgent escalation — Caroll + Jillian (Finance) same day.</p>
+            <div class="sla">Review completed within 1 working day of data extraction.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Monthly</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">Monitor OT Spend by Department</div>
+          <div class="step-icon">⏱️</div>
+          <div class="step-detail">
+            <p>Yegi tracks OT cost per department monthly against approved OT forms and policy thresholds (RM4,000 salary threshold, RM30 meal allowance, Grab fare per CKP OT policy).</p>
+            <p>Recurring OT in a department flagged as potential resourcing issue — not just a cost issue. Brings to Caroll: is this workload, headcount, or efficiency-driven?</p>
+            <p class="warn">Unapproved OT in payroll — escalate to HOD and Caroll immediately.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4</div>
+          <div class="step-title">Track Productivity vs Time Cost</div>
+          <div class="step-icon">🎯</div>
+          <div class="step-detail">
+            <p>HR tracks whether individual staff productivity (billable/chargeable hours) meets targets set per role. Staff cost per hour vs billable output per hour. Flags to HOD and Caroll where cost is disproportionate to output.</p>
+            <p class="note">⚠ Time cost targets per role to be set by Caroll with each HOD. HR monitors against agreed benchmarks once established.</p>
+            <div class="sla">Quarterly productivity cost review presented to Caroll and relevant HOD.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll · Quarterly</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Quarterly</div>
+          <div class="step-title">Quarterly Workforce Cost Review</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>Yegi prepares quarterly workforce cost pack: YTD staff cost vs budget, headcount movement, OT trend by department, productivity cost ratio, salary changes in the quarter. Caroll reviews with Jillian (Finance). Decisions: freeze hiring, adjust OT policy, address underperformance, or approve additional headcount.</p>
+            <div class="sla">Quarterly pack ready by 5th working day of new quarter: July, October, January, April.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERN PIPELINE -->
+<div id="intern-pipeline" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-007 — Intern Pipeline Management</h2>
+    <p>Maintaining consistent university relationships and rolling intake to ensure CKP has a minimum of 4 active interns at all times throughout the year.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Target:</strong> Minimum 4 interns active at all times</span>
+      <span class="meta-tag"><strong>Intake cycles:</strong> March–May, June–August, Oct–Dec (university dependent)</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Ongoing</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">Maintain University Contact List</div>
+          <div class="step-icon">🎓</div>
+          <div class="step-detail">
+            <p>Yegi maintains active contacts at universities and polytechnics: faculty coordinators, relevant departments (Accounting, Finance, Business Admin, IT), intake periods and application deadlines per institution. Minimum 5 active institution relationships. HRDC-registered institutions preferred.</p>
+            <div class="sla">Contact list reviewed and updated every 6 months — April and October.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">Proactive Outreach Before Each Intake</div>
+          <div class="step-icon">📧</div>
+          <div class="step-detail">
+            <p>Yegi contacts university coordinators 6–8 weeks before each intake period: confirm available slots, share updated internship brief (role scope, department, duration, allowance), request student nominations. Also posts intern openings on LinkedIn, Instagram, and job portals.</p>
+            <div class="sla">Outreach initiated 8 weeks before target intake start date.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">Screen &amp; Select Intern Candidates</div>
+          <div class="step-icon">📄</div>
+          <div class="step-detail">
+            <p>Yegi reviews applications: course relevance, availability dates, basic communication ability. Brief interview (virtual or physical) with Yegi and relevant HOD. Basic attitude and learning orientation assessed.</p>
+            <div class="sla">Selection confirmed minimum 3 weeks before intern start date to allow university paperwork.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4</div>
+          <div class="step-title">Confirm Placement &amp; University Paperwork</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>Yegi issues internship offer letter and completes university placement forms (supervisor details, department, duration, learning objectives). Confirms monthly allowance to Finance for payment setup.</p>
+            <p class="note">⚠ Intern allowance amount — confirm with Caroll per intake cycle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Ongoing</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Rolling</div>
+          <div class="step-title">Track Active Intern Count</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Yegi maintains a rolling intern tracker: active interns by department, end dates, upcoming gaps in count.</p>
+            <p><strong>Count ≥ 4:</strong> Monitor end dates for next cycle planning.<br><strong>Count dropping below 4 within 6 weeks:</strong> Trigger university outreach immediately.</p>
+            <div class="sla">Tracker reviewed monthly. Outreach triggered 6 weeks before count drops below 4.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERNSHIP PROGRAMME -->
+<div id="intern-prog" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-008 — Internship Programme Management</h2>
+    <p>The intern experience from Day 1 through evaluation and conversion assessment. A structured programme protects CKP's employer brand at universities and builds a talent pipeline.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi (admin) + HOD (supervision)</span>
+      <span class="meta-tag"><strong>Duration:</strong> Typically 3–6 months per intern</span>
+      <span class="meta-tag"><strong>Conversion:</strong> Strong interns assessed for full-time offer</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi + HOD · Day 1</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · Day 1</div>
+          <div class="step-title">Intern Orientation</div>
+          <div class="step-icon">🌟</div>
+          <div class="step-detail">
+            <p>Yegi covers: CKP overview, office rules, working hours, leave/MC procedure, Lark setup, dress code. HOD introduces intern to team and assigns a buddy for first 2 weeks. Intern receives: internship schedule, learning objectives, supervisor name, and evaluation criteria explained upfront.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · Week 1–2</div>
+          <div class="step-title">Assign Meaningful Work Scope</div>
+          <div class="step-icon">📝</div>
+          <div class="step-detail">
+            <p>HOD assigns structured, meaningful work aligned with intern's course and CKP's needs (e.g. bookkeeping support, CoSec filing prep, data entry with review, research tasks).</p>
+            <p class="warn">Interns must not substitute for permanent staff on critical client deliverables without HOD supervision.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Mid-Programme</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Mid-Point</div>
+          <div class="step-title">Mid-Programme Check-In</div>
+          <div class="step-icon">💬</div>
+          <div class="step-detail">
+            <p>Yegi conducts 15-min check-in with intern: learning experience, issues, feedback on supervision. HOD submits mid-point performance notes. Any concerns addressed before end of programme. University supervisor visits or log submissions — Yegi coordinates and ensures timely completion.</p>
+            <div class="sla">Mid-point at 6 weeks (3-month placement) or 8 weeks (6-month placement).</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · End of Programme</div>
+          <div class="step-title">Final Evaluation &amp; University Report</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>HOD completes intern evaluation form (to be built — see Gaps). Yegi submits university assessment forms and supervisor report by deadline. CKP issues internship completion letter to intern.</p>
+            <div class="sla">All university documents submitted by intern's last working day.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll / HOD</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Final Week</div>
+          <div class="step-title">Conversion Assessment</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>HOD submits conversion recommendation to Yegi.</p>
+            <p><strong>Yes — strong candidate:</strong> Yegi flags to Caroll. Intern informed CKP would welcome a formal application upon graduation. No commitment until SRF approved.<br><strong>No:</strong> Intern completes programme, receives positive reference if deserved. CKP maintains university relationship regardless.</p>
+            <p class="note">Treat every intern as a potential future staff member — this is a talent pipeline, not free labour.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HR RECORDS -->
+<div id="hr-records" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-009 — HR Records Management</h2>
+    <p>Maintaining complete, accurate, and audit-ready records for all recruitment activities and all employees throughout their employment lifecycle.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Systems:</strong> HR Easily + Physical Files + Server Folder</span>
+      <span class="meta-tag"><strong>Retention:</strong> Minimum 7 years post-exit (Employment Act)</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Recruitment</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">A1 · Per Hire Cycle</div>
+          <div class="step-title">Recruitment Activity Log</div>
+          <div class="step-icon">📁</div>
+          <div class="step-detail">
+            <p>For every recruitment cycle, Yegi maintains a complete record: approved SRF, job posting copies (all portals and social media), agency briefs to Intellipro and Career Horizons, all CVs received with source tagged (portal, agency, social media, referral), shortlist Excel with colour coding and rejection reasons, interview notes and scoring sheets for all candidates, offer letters, reference check records, health screening results, final outcome.</p>
+            <p class="warn">Records retained for minimum 12 months post-cycle even for rejected candidates — protects CKP against unfair hiring claims.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Employee Files</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">B1 · Per Employee</div>
+          <div class="step-title">Personal Employment File</div>
+          <div class="step-icon">👤</div>
+          <div class="step-detail">
+            <p>Each employee has a complete file (physical + HR Easily) containing: CV, offer letter, signed contract, IC copy, education certificates, EPF/SOCSO/PCB registration, bank details, emergency contact, Handbook acknowledgement, probation reviews (Months 1/2/3), confirmation letter, all appraisal records, salary change history with approval trail, disciplinary records, MCs on file, HRDC training records, and resignation/termination documentation.</p>
+            <p class="note">⚠ Employee files are confidential — access restricted to Yegi, HR Manager, and Caroll only.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">B2 · Ongoing</div>
+          <div class="step-title">Keep Records Current</div>
+          <div class="step-icon">🔄</div>
+          <div class="step-detail">
+            <p>Yegi updates employee records within 3 working days of any change: salary revision, role change, department transfer, disciplinary action, new address/emergency contact, new qualification, leave balance corrections. HR Easily is the primary live record. Physical file holds original signed documents.</p>
+            <div class="sla">No change event goes unrecorded beyond 3 working days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Annual</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">C1 · Annual · April</div>
+          <div class="step-title">Annual HR Records Audit</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Every April, Yegi audits all HR records: verifies all active employee files are complete, checks HR Easily profiles match physical records, confirms all prior-year leavers are correctly archived, identifies missing documents and obtains them, verifies retention compliance. Audit summary submitted to Caroll.</p>
+            <div class="sla">Completed by end of April each year.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HRDC -->
+<div id="hrdc" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-010 — HRDC Management</h2>
+    <p>Managing HRDC levy compliance, training grant claims for CKP internal staff, and HRDC claim processing on behalf of clients as a value-added service.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Scope:</strong> Internal (CKP staff) + External (clients)</span>
+      <span class="meta-tag"><strong>Portal:</strong> HRD Corp e-TRiS</span>
+      <span class="meta-tag"><strong>Levy deadline:</strong> 15th of following month</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Internal · Monthly</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1A · Monthly</div>
+          <div class="step-title">HRDC Levy Submission (CKP)</div>
+          <div class="step-icon">💳</div>
+          <div class="step-detail">
+            <p>Yegi submits monthly HRDC levy via HRD Corp e-TRiS: 1% of gross wages for all Malaysian employees. Reconciles levy amount against payroll total. Submits payment to Finance. Retains submission confirmation and payment receipt.</p>
+            <p class="warn">Late HRDC levy submission attracts penalty. Never miss the 15th deadline.</p>
+            <div class="sla">By 15th of following month, same cycle as EPF/SOCSO.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1B · As Required</div>
+          <div class="step-title">Internal Training Grant Claims</div>
+          <div class="step-icon">📚</div>
+          <div class="step-detail">
+            <p>For HRDC-claimable training: Yegi submits pre-training grant application via e-TRiS with provider details, course outline, participant list, dates, and fee invoice. Post-training: submits claim with attendance records, completion certificates, and payment proof. Tracks claim status. Alerts Finance on approval.</p>
+            <p class="note">Yegi to maintain a list of upcoming internal training programmes and confirm HRDC claimability with programme providers before submission.</p>
+            <div class="sla">Pre-training: minimum 14 days before. Post-training claim: within 30 days of completion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Client Service</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2A</div>
+          <div class="step-title">Client HRDC Onboarding</div>
+          <div class="step-icon">🤝</div>
+          <div class="step-detail">
+            <p>When CKP takes on HRDC management for a client: Yegi obtains client's e-TRiS access, reviews levy account balance, registered employee count, and outstanding submissions/claims. Sets up client HRDC file: company details, levy history, training calendar, claims tracker.</p>
+            <div class="sla">Client onboarding within 5 working days of engagement confirmation.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2B · Monthly</div>
+          <div class="step-title">Client Levy Submissions</div>
+          <div class="step-icon">📑</div>
+          <div class="step-detail">
+            <p>Yegi obtains client's monthly payroll data (agreed format). Calculates levy (1% of gross wages). Submits via e-TRiS on client's behalf. Sends confirmation to client and files receipt.</p>
+            <p class="warn">Client must provide payroll data by 10th of following month to allow submission before the 15th deadline.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2C · As Required</div>
+          <div class="step-title">Client Training Grant Claims</div>
+          <div class="step-icon">🎓</div>
+          <div class="step-detail">
+            <p>Manages HRDC training applications and claims for clients: pre-training application, attendance and completion documentation, post-training claims, follow-up on pending claims, advisory on eligible programmes. Monthly status update sent to client on open claims.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi — Tracking</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Monthly</div>
+          <div class="step-title">HRDC Master Tracker Update</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>Yegi maintains master HRDC tracker (Excel or Lark Sheet) for CKP and all clients: levy submission status per entity per month, training grant applications (open/approved/rejected), pending claims and amounts, levy balance per client. Monthly summary in HR report to Caroll — including CKP's own levy utilisation rate.</p>
+            <div class="sla">Tracker updated within 3 working days of any submission or claim action.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCIPLINARY -->
+<div id="disciplinary" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-011 — Disciplinary Process</h2>
+    <p>Defined escalation path for all disciplinary matters. Verbal warning through to show cause and termination. Consistent application across all departments with full documentation at every stage.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi (documentation) + HOD (initiation) + Caroll (escalation)</span>
+      <span class="meta-tag"><strong>Legal ref:</strong> Employment Act 1955, Industrial Relations Act 1967</span>
+      <span class="meta-tag"><strong>Principle:</strong> Document everything. No surprises at termination.</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">Identify &amp; Document Issue</div>
+          <div class="step-icon">⚠️</div>
+          <div class="step-detail">
+            <p>HOD identifies a disciplinary or performance concern (misconduct or persistent performance failure). Documents: date, nature of issue, evidence, prior verbal reminders. Submits to Yegi before any formal action is taken.</p>
+            <p class="warn">HODs must not issue any written warning or letter independently — all formal disciplinary documents go through Yegi and are approved by Caroll.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi + Caroll</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">Assess Severity — Which Level?</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Yegi and Caroll determine correct entry point:</p>
+            <p><strong>Level 1 — Verbal Warning:</strong> First minor offence.<br><strong>Level 2 — Written Warning:</strong> Repeated minor offence or moderate misconduct.<br><strong>Level 3 — Show Cause:</strong> Serious or repeated misconduct requiring formal explanation.<br><strong>Level 4 — Termination:</strong> Gross misconduct (theft, fraud, violence, harassment) — can bypass earlier levels.</p>
+            <p class="note">When in doubt, start lower and document — do not jump to termination without a paper trail.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3A · Level 1</div>
+          <div class="step-title">Verbal Warning</div>
+          <div class="step-icon">🗣️</div>
+          <div class="step-detail">
+            <p>HOD delivers verbal warning in private. Yegi prepares internal memo recording: date, who present, issue discussed, expected behaviour, employee's response. Filed in HR record. If issue recurs within 3 months, escalate to Written Warning.</p>
+            <div class="sla">Memo filed within 2 working days of verbal warning.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3B · Level 2</div>
+          <div class="step-title">Written Warning Letter</div>
+          <div class="step-icon">📝</div>
+          <div class="step-detail">
+            <p>Yegi prepares written warning letter, approved by Caroll. States: specific issue, dates, prior verbal warning reference, corrective action required, consequence of recurrence. Employee signs acknowledgement of receipt. Copy filed, copy to employee.</p>
+            <p class="warn">Employee refuses to sign — Yegi notes refusal in writing with a witness. File stands regardless.</p>
+            <div class="sla">Letter issued within 5 working days of incident confirmation.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3C · Level 3</div>
+          <div class="step-title">Show Cause Letter</div>
+          <div class="step-icon">⚖️</div>
+          <div class="step-detail">
+            <p>Yegi prepares show cause letter, approved by Caroll. States allegation(s) and requires written explanation within 5 working days. Caroll reviews response: accept (no further action), issue final warning, proceed to domestic inquiry, or termination.</p>
+            <p class="warn">Show cause is legally significant — do not deviate from procedure. Consult an employment lawyer for complex cases.</p>
+            <div class="sla">Employee: 5 working days to respond. Caroll decision: within 5 working days of response.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll · Level 4</div>
+      <div class="steps-row">
+        <div class="step alert-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · Level 4</div>
+          <div class="step-title">Termination</div>
+          <div class="step-icon">🔴</div>
+          <div class="step-detail">
+            <p>Termination only after proper documentation trail (except gross misconduct). Caroll makes final decision. Yegi prepares termination letter: grounds, effective date, final pay entitlements. For gross misconduct, employee may be suspended with pay pending inquiry. Jeremy informed on all terminations. Yegi triggers HR-PROC-005 (Offboarding) immediately.</p>
+            <p class="warn">Wrongful dismissal claims are costly and damaging. The documentation trail from Step 1 is the only protection. Never terminate without it.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · All Levels</div>
+          <div class="step-title">File &amp; Monitor</div>
+          <div class="step-icon">📁</div>
+          <div class="step-detail">
+            <p>All disciplinary records filed in employee HR file immediately after each action. Yegi tracks open matters in HR Monthly Report: issue type, level, date of action, status, next review date. No disciplinary matter should be "pending" more than 30 days without a defined next step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPRAISALS -->
+<div id="appraisals" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-012 — Appraisal Process</h2>
+    <p>Bi-annual cycle — April and October. Covers all confirmed employees. Preparation, self-assessment, HOD review, GM calibration, outcome communication, and salary linkage.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi (process) + HOD (assessment) + Caroll (calibration)</span>
+      <span class="meta-tag"><strong>Cycle:</strong> April and October</span>
+      <span class="meta-tag"><strong>Eligible:</strong> All confirmed employees. Probationary staff — probation review only (HR-PROC-002).</span>
+      <span class="meta-tag"><strong>Cross-ref:</strong> HR-PROC-011 (Disciplinary) for performance issues surfaced in appraisal</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · D-21</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · 3 Weeks Before</div>
+          <div class="step-title">Issue Appraisal Forms &amp; Brief HODs</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>Yegi distributes appraisal forms to all HODs (Excel or Lark — to be standardised). Briefs on: timeline, rating scale, requirement for written comments (not just scores), handling underperformance findings, and submission deadline. Form covers: KPI achievement, quality of work, attitude and culture fit, teamwork, initiative, strengths, development areas, overall HOD rating, recommended outcome (confirm, increment, no increment, PIP).</p>
+            <div class="sla">Forms issued 3 weeks before appraisal month (March for April cycle; September for October cycle).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane staff">Staff</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · D-14</div>
+          <div class="step-title">Employee Self-Assessment</div>
+          <div class="step-icon">🪞</div>
+          <div class="step-detail">
+            <p>Each employee completes self-assessment: achievements, challenges, skills developed, goals for next period, support needed from CKP. Submitted to HOD. HOD reviews self-assessment before completing their own section — ensures employee's perspective is considered.</p>
+            <div class="sla">Submitted to HOD 2 weeks before appraisal month.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · D-7</div>
+          <div class="step-title">HOD Completes Assessment</div>
+          <div class="step-icon">📝</div>
+          <div class="step-detail">
+            <p>HOD completes evaluation section with written comments — scores without narrative are not accepted. Submits to Yegi by deadline.</p>
+            <p class="warn">HOD missing submission deadline — Yegi escalates to Caroll. Appraisals are not optional for HODs.</p>
+            <div class="sla">HOD submissions to Yegi 1 week before appraisal month.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll · Calibration</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4</div>
+          <div class="step-title">Calibration Session</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Caroll reviews all HOD submissions with Yegi. Ensures rating consistency across departments (no HOD inflating scores), alignment with actual performance observed, and increment budget not exceeded. Caroll approves, adjusts, or queries HOD ratings — adjustments communicated back to HOD with reason before employee is informed.</p>
+            <div class="sla">Calibration completed within first week of appraisal month (April / October).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane hod">HOD</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5</div>
+          <div class="step-title">Appraisal Discussion with Employee</div>
+          <div class="step-icon">💬</div>
+          <div class="step-detail">
+            <p>HOD conducts 1:1 appraisal discussion: overall rating, specific feedback, recognition of achievements, development areas, goals for next 6 months. Employee signs appraisal form to acknowledge discussion.</p>
+            <p class="note">This is a two-way conversation — employee must leave knowing exactly where they stand and what they need to do differently or maintain.</p>
+            <div class="sla">All discussions completed within 2 weeks of appraisal month start.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6</div>
+          <div class="step-title">Performance Outcome Decision</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p><strong>Strong / Meets expectations:</strong> Increment approved (if within budget). Yegi updates salary in HR Easily.<br><strong>Below expectations:</strong> No increment. Performance Improvement Plan (PIP) initiated — HOD + Caroll + Yegi define 90-day targets. Cross-reference HR-PROC-011 if PIP fails.<br><strong>Exceeds expectations:</strong> Increment + Caroll considers promotion or role expansion discussion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7</div>
+          <div class="step-title">Update Records &amp; Payroll</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Yegi files all completed appraisal forms in HR records. Updates HR Easily: new salary (if increment), appraisal date, next review date. Coordinates with Jillian to reflect increment in next payroll cycle. Prepares appraisal cycle summary for Caroll: number of increments, total salary cost increase, PIPs initiated.</p>
+            <div class="sla">HR Easily and payroll updated before next payroll cut-off after appraisal completion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATUTORY COMPLIANCE -->
+<div id="statutory" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-013 — Statutory Compliance Calendar</h2>
+    <p>Annual and recurring statutory obligations beyond monthly payroll submissions. HR owns the compliance calendar — missed deadlines carry financial penalties and legal risk.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Escalation:</strong> Caroll notified of any deadline risk minimum 2 weeks in advance</span>
+      <span class="meta-tag"><strong>Principle:</strong> No statutory deadline should ever be a surprise.</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Jan–Feb · Annual</div>
+      <div class="steps-row">
+        <div class="step alert-step" onclick="toggleStep(this)">
+          <div class="step-num">FEB · Deadline: Last Day</div>
+          <div class="step-title">EA Forms (Form EA)</div>
+          <div class="step-icon">📑</div>
+          <div class="step-detail">
+            <p>Yegi generates EA forms for all employees from HR Easily covering prior year's earnings, EPF, and PCB deductions. Distributed to all staff by last day of February. Preparation starts January — verify all payroll figures are reconciled before generating.</p>
+            <p class="warn">Late EA forms — penalty under Income Tax Act. All employees must receive before filing personal tax returns.</p>
+            <div class="sla">EA forms distributed by 28 February. Preparation begins 1 January.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step alert-step" onclick="toggleStep(this)">
+          <div class="step-num">FEB · Deadline: Last Day</div>
+          <div class="step-title">Form E (Employer Return)</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>Yegi prepares and submits Form E (Borang E) to LHDN via e-Filing: employer's return of remuneration for all employees for the prior year. Includes CP8D. Must match EA totals exactly. Verify employee count against HR Easily records.</p>
+            <p class="warn">Failure to submit or late submission carries penalties. Do not wait until the last week.</p>
+            <div class="sla">Submitted by last day of February.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Monthly · Recurring</div>
+      <div class="steps-row">
+        <div class="step" style="border-color:var(--amber)" onclick="toggleStep(this)">
+          <div class="step-num">MONTHLY · By 15th</div>
+          <div class="step-title">EPF, SOCSO/EIS, PCB, HRDC Levy</div>
+          <div class="step-icon">🔄</div>
+          <div class="step-detail">
+            <p>Covered in detail under HR-PROC-003 (Payroll Processing). Referenced here for completeness of the compliance calendar. EPF (KWSP i-Akaun) · SOCSO + EIS (PERKESO ASSIST) · PCB/MTD (LHDN e-PCB / MyTax) · HRDC Levy (HRD Corp e-TRiS) — all due by 15th of following month.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Event-Triggered</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">ON NEW HIRE</div>
+          <div class="step-title">EPF / SOCSO / PCB Registration</div>
+          <div class="step-icon">✅</div>
+          <div class="step-detail">
+            <p>Every new employee registered with EPF, SOCSO/EIS, and LHDN for PCB before their first payroll run. Yegi registers in all three portals within first week. Confirms registration numbers and updates HR Easily profile.</p>
+            <div class="sla">Registration completed within first week, before first payroll close.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">ON EXIT</div>
+          <div class="step-title">Final Statutory Submissions</div>
+          <div class="step-icon">🔒</div>
+          <div class="step-detail">
+            <p>On exit: final month contributions submitted correctly (prorated), EPF withdrawal form provided if requested, LHDN CP22A (cessation of employment) filed within 30 days of last day for employees with PCB obligations.</p>
+            <div class="sla">CP22A filed within 30 days of last working day.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">ANNUAL · April</div>
+          <div class="step-title">Compliance Calendar Reset</div>
+          <div class="step-icon">📅</div>
+          <div class="step-detail">
+            <p>Every April, Yegi prepares the statutory compliance calendar for the coming year: all known deadlines plotted, reminders set in Lark, Caroll notified of key dates. Any regulatory changes (rate adjustments, new requirements) incorporated.</p>
+            <div class="sla">Calendar shared with Caroll by 15 April each year.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HANDBOOK REVIEW -->
+<div id="handbook" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-014 — Employee Handbook Review Cycle</h2>
+    <p>Annual review process to keep the Employee Handbook current with CKP's growth, policy changes, and regulatory updates. The Handbook is a living document — not a one-time artefact.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> HR Manager (from June 2026) / Yegi (interim)</span>
+      <span class="meta-tag"><strong>Approver:</strong> Caroll + Jeremy</span>
+      <span class="meta-tag"><strong>Review cycle:</strong> Annual — every April</span>
+      <span class="meta-tag"><strong>Trigger reviews:</strong> Regulatory change, new branch, significant headcount milestone</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">HR / Yegi · March</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · March</div>
+          <div class="step-title">Collect Review Inputs</div>
+          <div class="step-icon">📥</div>
+          <div class="step-detail">
+            <p>HR collects inputs from: regulatory updates (Employment Act amendments, SOCSO changes, HRDC requirements), disciplinary cases that exposed policy gaps, appraisal and exit interview feedback on confusing policies, HOD feedback on hard-to-enforce policies, new operational realities (branch operations, intern policies, remote work).</p>
+            <div class="sla">Input collection completed by end of March.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · Early April</div>
+          <div class="step-title">Draft Amendments</div>
+          <div class="step-icon">✏️</div>
+          <div class="step-detail">
+            <p>HR drafts proposed amendments with change tracking: what is being amended, current wording, proposed new wording, reason for change. New sections drafted for identified gaps.</p>
+            <p class="note">For significant legal changes (e.g. Employment Act amendments), consider engagement with an employment lawyer before finalising.</p>
+            <div class="sla">Draft amendments ready for Caroll by 10 April.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll + Jeremy</div>
+      <div class="steps-row">
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Mid-April</div>
+          <div class="step-title">Review &amp; Approve</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Caroll reviews amendments: does this protect CKP legally, does it reflect how we actually operate, is it clear for a new employee? Jeremy signs off on final version.</p>
+            <p><strong>Approved:</strong> HR prepares final version for distribution.<br><strong>Revisions needed:</strong> HR amends and resubmits within 5 working days.</p>
+            <div class="sla">Approval by 20 April.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · End of April</div>
+          <div class="step-title">Distribute &amp; Acknowledge</div>
+          <div class="step-icon">📢</div>
+          <div class="step-detail">
+            <p>Yegi distributes updated Handbook to all staff via Lark. All staff sign acknowledgement form confirming receipt. Forms filed in each employee's HR record. New joiners always receive current version during onboarding and sign on Day 1.</p>
+            <div class="sla">Distribution completed by end of April. All acknowledgements filed within 2 weeks.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5 · Triggered</div>
+          <div class="step-title">Out-of-Cycle Updates</div>
+          <div class="step-icon">⚡</div>
+          <div class="step-detail">
+            <p>For urgent regulatory or operational changes between annual reviews, HR issues a Policy Notice to all staff and updates the Handbook immediately. Staff acknowledge the specific change in writing. Out-of-cycle updates incorporated into next annual review version.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HR MONTHLY REPORTING -->
+<div id="hr-reporting" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-015 — HR Monthly Reporting</h2>
+    <p>Structured monthly HR dashboard delivered to Caroll by the 5th working day — without being asked. Covers all people metrics needed to manage CKP's RM6.6M growth mandate.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Owner:</strong> Yegi / HR Manager</span>
+      <span class="meta-tag"><strong>Recipient:</strong> Caroll (GM) — copy Jeremy if significant items</span>
+      <span class="meta-tag"><strong>Deadline:</strong> 5th working day of each month — non-negotiable</span>
+      <span class="meta-tag"><strong>Format:</strong> Excel or Lark Sheet — to be standardised</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+  <div class="flow-grid">
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Post-Payroll</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · By 3rd Working Day</div>
+          <div class="step-title">Compile Headcount Data</div>
+          <div class="step-icon">👥</div>
+          <div class="step-detail">
+            <p>From HR Easily: total active headcount by department, new joiners (name, role, department, date), leavers (name, role, reason), net headcount movement, probationary staff count with confirmation due dates, intern count by department.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · By 3rd Working Day</div>
+          <div class="step-title">Compile Cost &amp; OT Data</div>
+          <div class="step-icon">💰</div>
+          <div class="step-detail">
+            <p>From finalised payroll: total gross payroll this month vs prior month vs budget, OT spend by department vs prior month, salary changes in the month, total employer statutory contributions (EPF + SOCSO + EIS + HRDC levy). MoM variance flagged with brief explanation for any line item moving more than 5%.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · By 4th Working Day</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">Compile Recruitment Pipeline</div>
+          <div class="step-icon">🎯</div>
+          <div class="step-detail">
+            <p>Open SRFs by role, department, stage (sourcing / screening / interview / offer / health screening), target joining date. Positions filled this month. Positions cancelled or on hold. Agency spend for the month (Intellipro, Career Horizons).</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4</div>
+          <div class="step-title">Compile Open Matters</div>
+          <div class="step-icon">⚠️</div>
+          <div class="step-detail">
+            <p>Open disciplinary matters (employee, issue type, stage, next action date). Open PIPs (employee, start date, review date). Pending confirmations (due within 30 days). HRDC claims pending (entity, reference, amount, status). Statutory compliance items due in next 30 days.</p>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5</div>
+          <div class="step-title">Leave &amp; Absenteeism Summary</div>
+          <div class="step-icon">📅</div>
+          <div class="step-detail">
+            <p>Leave days taken by department. Medical leave — flag any individual with more than 2 MC days in the month. AWOL incidents if any. Productivity cost ratio update (quarterly — include in April, July, October, January reports).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="connector">↓</div>
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · 5th Working Day</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6 · 5th Working Day</div>
+          <div class="step-title">Submit HR Monthly Report to Caroll</div>
+          <div class="step-icon">📤</div>
+          <div class="step-detail">
+            <p>Yegi compiles all sections into the HR Monthly Report and submits to Caroll via Lark by the 5th working day. Report is structured, concise, and action-oriented — not a data dump. Each open matter has a recommended next action. Caroll responds within 2 working days with approvals, decisions, or queries.</p>
+            <p class="warn">If report will be late (e.g. payroll ran late), Caroll must be notified in advance — not after the deadline has passed.</p>
+            <div class="sla">Non-negotiable deadline: 5th working day of each month.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CULTURE & EMPLOYEE EXPERIENCE -->
+<div id="culture" class="tab-panel">
+  <div class="section-head">
+    <h2>HR-PROC-016 — Culture &amp; Employee Experience</h2>
+    <p>Formalising CKP's culture mandate into a managed programme with a fixed engagement calendar, a structured pulse mechanism, recognition touchpoints, and clear ownership. Culture is not an event — it is a consistently managed experience.</p>
+    <div class="process-meta">
+      <span class="meta-tag"><strong>Current owner:</strong> Caroll (drives) + Yegi (supports)</span>
+      <span class="meta-tag"><strong>Transitioning to:</strong> HR Manager (from June 2026) + Yegi — Caroll retains strategic direction</span>
+      <span class="meta-tag"><strong>Cadence:</strong> Fixed annual calendar + monthly touchpoints</span>
+      <span class="meta-tag"><strong>Non-negotiable:</strong> Culture experience must be consistently high — not event-dependent</span>
+    </div>
+  </div>
+  <p class="click-hint">Click any step card to expand full detail.</p>
+
+  <div class="flow-grid">
+
+    <!-- ANNUAL PLANNING -->
+    <div class="flow-row">
+      <div class="flow-lane caroll">Caroll + Yegi · April</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 1 · Annual · April</div>
+          <div class="step-title">Build the Annual Engagement Calendar</div>
+          <div class="step-icon">📅</div>
+          <div class="step-detail">
+            <p>Every April (start of FY), Caroll and Yegi plan the full-year engagement calendar. The calendar has two layers:</p>
+            <p><strong>Fixed anchors</strong> — committed events that happen regardless: team annual dinner (Q4), mid-year team outing (Q2), festive celebrations (CNY, Hari Raya, Deepavali, Christmas — office decorations + small celebration), staff birthday acknowledgements (monthly), and CKP anniversary recognition.</p>
+            <p><strong>Flex activities</strong> — planned but adaptable: quarterly team lunches, team building activities, learning sessions (internal lunch-and-learn or external training), recognition moments tied to milestones (project completions, client wins, performance achievements).</p>
+            <p>Budget confirmed with Jeremy. Calendar shared with all HODs in April. No engagement activity should be ad hoc — every activity is either a fixed anchor or a planned flex item.</p>
+            <div class="sla">FY engagement calendar finalised and shared by 30 April each year.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- MONTHLY TOUCHPOINTS -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Monthly</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 2 · Monthly</div>
+          <div class="step-title">Monthly Culture Touchpoints</div>
+          <div class="step-icon">🌟</div>
+          <div class="step-detail">
+            <p>Yegi executes monthly non-negotiable touchpoints:</p>
+            <p><strong>Birthday acknowledgements:</strong> Every staff member's birthday acknowledged — minimum a Lark message from Caroll/HR, ideally a small token for milestone birthdays. No birthday goes unacknowledged.</p>
+            <p><strong>New joiner welcome:</strong> Every new staff member introduced to the full team via Lark on their first day — name, role, department, and a welcome message. Creates belonging from Day 1.</p>
+            <p><strong>Work anniversary recognition:</strong> 1-year, 3-year, 5-year milestones acknowledged by Caroll publicly in Lark. Signals that loyalty is noticed and valued.</p>
+            <p><strong>Monthly team update:</strong> Caroll shares a brief monthly team message via Lark — wins, recognitions, reminders of CKP's direction. Keeps the team connected to the bigger picture.</p>
+            <div class="sla">All monthly touchpoints executed without prompting. Yegi maintains a calendar reminder for each.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 3 · Quarterly</div>
+          <div class="step-title">Quarterly Engagement Activity</div>
+          <div class="step-icon">🎉</div>
+          <div class="step-detail">
+            <p>Yegi plans and executes one meaningful team activity per quarter. Activities rotate: Q1 (team lunch / CNY celebration), Q2 (mid-year outing — external), Q3 (internal team building or learning event), Q4 (year-end dinner — the anchor event).</p>
+            <p>Yegi handles logistics: venue, budget, headcount, dietary requirements, transport if needed. HODs responsible for ensuring full team participation — no "too busy" culture around engagement activities.</p>
+            <p class="note">Activity format can vary — the consistency of cadence is what builds culture, not the budget size.</p>
+            <div class="sla">Each quarterly activity confirmed minimum 4 weeks in advance. Budget approved by Caroll before any commitment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- PULSE CHECK -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Bi-Annual</div>
+      <div class="steps-row">
+        <div class="step system-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 4 · April &amp; October</div>
+          <div class="step-title">Bi-Annual Pulse Survey</div>
+          <div class="step-icon">📊</div>
+          <div class="step-detail">
+            <p>Yegi administers a short anonymous pulse survey to all staff twice a year — timed with the appraisal cycle (April and October). Conducted via Google Form or Lark Form. Maximum 10 questions, 5 minutes to complete.</p>
+            <p>Survey covers: overall happiness at CKP (1–10), clarity on role and expectations, quality of feedback received from HOD, feeling of being valued and recognised, confidence in CKP's direction, one thing CKP is doing well, one thing CKP should do differently.</p>
+            <p>Anonymous — no names collected. Results shared with Caroll and Jeremy in summary form only. HODs never see individual responses.</p>
+            <p class="warn">If average happiness score drops below 7, this is a red flag requiring immediate discussion between Caroll and Yegi — do not wait for the next cycle.</p>
+            <div class="sla">Survey open for 5 working days. Results compiled and shared with Caroll within 3 working days of survey close.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step decision" onclick="toggleStep(this)">
+          <div class="step-num">STEP 5</div>
+          <div class="step-title">Review Results &amp; Act</div>
+          <div class="step-icon">◆</div>
+          <div class="step-detail">
+            <p>Caroll reviews pulse survey results with Yegi. Key question: what does this tell us that we didn't already know?</p>
+            <p><strong>Scores positive / stable:</strong> Acknowledge wins. Share a sanitised summary with the team — "here's what you told us, here's what we're doing." Closes the feedback loop.</p>
+            <p><strong>Specific concern surfaced:</strong> Caroll and relevant HOD discuss. Action plan agreed. Timeline set. Result communicated back to team as "you raised X, we're doing Y."</p>
+            <p><strong>Systemic concern (multiple areas low):</strong> Escalate to Caroll + Jeremy. May trigger a deeper review of workload, management approach, or compensation.</p>
+            <p class="note">The value of a pulse survey is in the response to it — not in the data collection. A survey with no visible follow-through destroys trust faster than no survey at all.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- HOD CULTURE ACCOUNTABILITY -->
+    <div class="flow-row">
+      <div class="flow-lane hod">HODs · Ongoing</div>
+      <div class="steps-row">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 6 · Ongoing</div>
+          <div class="step-title">HOD Culture Accountability</div>
+          <div class="step-icon">👥</div>
+          <div class="step-detail">
+            <p>Culture is not HR's job alone — HODs are accountable for the day-to-day experience within their teams. Caroll sets the expectation explicitly: HODs are culture carriers, not just task managers.</p>
+            <p>HOD culture expectations: conduct regular 1:1s with direct reports (minimum monthly), address team friction early — do not let interpersonal issues fester, acknowledge good work within the team, model CKP's values in how they communicate and make decisions, flag to Caroll or Yegi if a team member appears disengaged or struggling.</p>
+            <p>Culture accountability is included as a dimension in HOD's own appraisal (HR-PROC-012) — it is not a soft add-on.</p>
+            <div class="sla">HOD 1:1s with direct reports: minimum monthly. No exceptions during busy periods.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 7 · Ongoing</div>
+          <div class="step-title">Early Warning Detection</div>
+          <div class="step-icon">🔍</div>
+          <div class="step-detail">
+            <p>Yegi and Caroll actively watch for early warning signs of culture or engagement deterioration — not waiting for the pulse survey to surface problems.</p>
+            <p>Watch signals: sudden increase in MC or leave applications in a department, drop in productivity without clear workload reason, increase in resignations from same department or team, staff becoming withdrawn or less communicative in Lark, HOD receiving frequent complaints from team members.</p>
+            <p>If two or more signals appear in the same department within the same month, Caroll conducts an informal 1:1 with 2–3 team members to take the temperature directly.</p>
+            <p class="note">Early intervention costs far less than losing a good employee and restarting a recruitment cycle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">↓</div>
+
+    <!-- MONTHLY CULTURE REPORT -->
+    <div class="flow-row">
+      <div class="flow-lane yegi">Yegi · Monthly</div>
+      <div class="steps-row">
+        <div class="step ok-step" onclick="toggleStep(this)">
+          <div class="step-num">STEP 8 · Monthly</div>
+          <div class="step-title">Culture Section in HR Monthly Report</div>
+          <div class="step-icon">📋</div>
+          <div class="step-detail">
+            <p>The HR Monthly Report (HR-PROC-015) includes a standing Culture &amp; Engagement section: activities completed in the month, upcoming activities in next 30 days, any early warning signals observed, pulse survey results (in April and October months), recognition moments actioned. Keeps Caroll's finger on the pulse without requiring a separate meeting.</p>
+            <div class="sla">Included in every monthly HR report — not optional.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONSOLIDATED GAPS — UPDATED WITH CULTURE -->
+<div id="gaps" class="tab-panel">
+  <div class="section-head">
+    <h2>Gaps &amp; Actions — HR Department (Consolidated)</h2>
+    <p>All process gaps across Part 1 and Part 2 (HR-PROC-001 to 016). Prioritised by risk. To be reviewed with Yegi and incoming HR Manager (June 2026). Every item has an owner and target date.</p>
+  </div>
+
+  <div class="section-head" style="margin-top:0;margin-bottom:12px;"><h2 style="font-size:14px;color:var(--rose);">🔴 High Priority</h2></div>
+  <div class="gaps-grid">
+    <div class="gap-card high"><div class="gap-tag high">HIGH · Recruitment</div><div class="gap-title">No Standardised Interview Guide or Scoring Sheet</div><div class="gap-desc">First-round interviews conducted without standard question framework or scoring criteria. Decisions are subjective and undocumented. Risk: inconsistent hiring, legal exposure.</div><div class="gap-action">→ Build interview guide + scoring sheet aligned to Persona Cards (CKP-HR-RPC-001). Owner: Yegi + Caroll. Target: June 2026.</div></div>
+    <div class="gap-card high"><div class="gap-tag high">HIGH · Onboarding</div><div class="gap-title">No Formal Day 1 / Week 1 Onboarding Checklist</div><div class="gap-desc">Orientation is informal and inconsistent. New hire experience depends on who is present. Risk: missed documentation, poor first impression, access delays.</div><div class="gap-action">→ Build standardised onboarding checklist. Owner: Yegi. Target: May 2026.</div></div>
+    <div class="gap-card high"><div class="gap-tag high">HIGH · Offboarding</div><div class="gap-title">No Exit Interview Template or Attrition Analysis</div><div class="gap-desc">Exit interviews are informal, undocumented, and unanalysed. Caroll has no visibility into attrition trends. Risk: repeated turnover from same root causes with no corrective action.</div><div class="gap-action">→ Build exit interview template + monthly attrition summary. Owner: Yegi + HR Manager. Target: June 2026.</div></div>
+    <div class="gap-card high"><div class="gap-tag high">HIGH · Workforce Control</div><div class="gap-title">No Productivity Cost Benchmarks Set Per Role</div><div class="gap-desc">HR cannot monitor time cost vs productivity without agreed benchmarks. Targets not yet defined per role. Risk: cost creep undetected until P&amp;L review.</div><div class="gap-action">→ Caroll + HODs to define time cost targets per role. HR monitors once set. Owner: Caroll + each HOD. Target: June 2026.</div></div>
+    <div class="gap-card high"><div class="gap-tag high">HIGH · Culture</div><div class="gap-title">No Formal Pulse Survey Mechanism in Place</div><div class="gap-desc">CKP currently has no structured way to take the temperature of the team. Issues surface at exit interviews or through gossip — not proactively. Risk: disengagement and attrition without early warning.</div><div class="gap-action">→ Build pulse survey template (Google Form or Lark Form, max 10 questions). Run first survey by end of April 2026. Owner: Yegi + Caroll. Target: April 2026.</div></div>
+  </div>
+
+  <div class="section-head" style="margin-top:24px;margin-bottom:12px;"><h2 style="font-size:14px;color:var(--amber);">🟡 Medium Priority</h2></div>
+  <div class="gaps-grid">
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Onboarding</div><div class="gap-title">Probation Review Forms Not Formalised</div><div class="gap-desc">Monthly probation feedback collected verbally with no standard form. Risk: disputes, Employment Act non-compliance on termination.</div><div class="gap-action">→ Build Month 1/2/3 probation review forms. Owner: Yegi. Target: May 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Offboarding</div><div class="gap-title">Clearance Checklist Not Formalised</div><div class="gap-desc">Offboarding clearance is informal across departments. Risk: unreturned equipment, access not revoked, incomplete handovers.</div><div class="gap-action">→ Build offboarding clearance checklist. Owner: Yegi + William. Target: May 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Leave</div><div class="gap-title">Leave Carry-Forward Policy Undocumented</div><div class="gap-desc">Informal understanding varies across staff. Risk: year-end disputes, inconsistent treatment.</div><div class="gap-action">→ Caroll to confirm carry-forward limit. Yegi to formalise in Handbook. Target: May 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Intern Programme</div><div class="gap-title">No Intern Evaluation Form</div><div class="gap-desc">HODs assess interns informally. No standard mid-point or end-of-programme form. Risk: inconsistent experience, missed conversion opportunities.</div><div class="gap-action">→ Build intern evaluation form. Owner: Yegi. Target: June 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · HRDC</div><div class="gap-title">No Master HRDC Tracker</div><div class="gap-desc">HRDC submissions and claims tracked informally for both CKP and clients. Risk: missed claims, late submissions, under-utilised levy balance.</div><div class="gap-action">→ Build HRDC master tracker (Excel or Lark Sheet). Owner: Yegi. Target: May 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Appraisals</div><div class="gap-title">Appraisal Form Not Standardised</div><div class="gap-desc">No consistent appraisal form across departments. Risk: calibration difficult, outcomes inconsistent, legal risk on performance-based decisions.</div><div class="gap-action">→ Build standard appraisal form. Owner: Yegi + Caroll. Target: Before October 2026 cycle.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Culture</div><div class="gap-title">No Annual Engagement Calendar for FY2026/27</div><div class="gap-desc">Engagement activities happen but without a committed annual calendar. Risk: activities become reactive and budget-dependent rather than a consistent cultural signal.</div><div class="gap-action">→ Caroll + Yegi to build FY2026/27 engagement calendar with budget. Owner: Caroll + Yegi. Target: End of April 2026.</div></div>
+    <div class="gap-card med"><div class="gap-tag med">MEDIUM · Culture</div><div class="gap-title">HOD Culture Accountability Not Formally Defined</div><div class="gap-desc">HODs understand that culture matters but have no explicit accountability or expectations documented. Risk: culture is seen as HR's job rather than a shared leadership responsibility.</div><div class="gap-action">→ Caroll to brief all HODs on culture expectations. Add culture dimension to appraisal form. Owner: Caroll. Target: June 2026.</div></div>
+  </div>
+
+  <div class="section-head" style="margin-top:24px;margin-bottom:12px;"><h2 style="font-size:14px;color:var(--green);">🟢 Low Priority</h2></div>
+  <div class="gaps-grid">
+    <div class="gap-card low"><div class="gap-tag low">LOW · Payroll</div><div class="gap-title">No Payroll MoM Variance Dashboard</div><div class="gap-desc">Caroll receives payroll summary without month-on-month variance analysis. Hard to spot salary creep at a glance.</div><div class="gap-action">→ Add MoM comparison to HR Monthly Report. Owner: Yegi. Target: July 2026.</div></div>
+    <div class="gap-card low"><div class="gap-tag low">LOW · Records</div><div class="gap-title">No Defined Server Folder Structure for HR Files</div><div class="gap-desc">HR files stored without standardised naming convention. Retrieval inefficient at 50+ headcount.</div><div class="gap-action">→ Define HR server folder structure. Owner: Yegi + William. Target: June 2026.</div></div>
+    <div class="gap-card low"><div class="gap-tag low">LOW · Handbook</div><div class="gap-title">Salary Review &amp; Increment Policy Not Documented</div><div class="gap-desc">Increment decisions are case by case with no documented criteria or budget envelope. Risk: perception of unfairness as headcount grows.</div><div class="gap-action">→ HR Manager to draft increment policy framework. Owner: HR Manager. Target: September 2026.</div></div>
+    <div class="gap-card low"><div class="gap-tag low">LOW · Culture</div><div class="gap-title">No Recognition Framework</div><div class="gap-desc">Recognition happens informally and inconsistently. Some staff receive public acknowledgement frequently; others never. Risk: perceived favouritism, disengagement among unrecognised staff.</div><div class="gap-action">→ HR Manager to propose a simple recognition framework (peer recognition, HOD nomination, milestone awards). Owner: HR Manager. Target: September 2026.</div></div>
+  </div>
+</div>
+
+<script>
+const tabNav = document.querySelector('.tab-nav');
+tabNav.innerHTML = `
+  <div style="display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;white-space:nowrap;border-right:2px solid var(--border);margin-right:4px;">PART 1</div>
+  <button class="tab-btn active" onclick="showTab('overview',this)"><span class="tab-dot" style="background:#1A3560"></span>Overview</button>
+  <button class="tab-btn" onclick="showTab('recruitment',this)"><span class="tab-dot" style="background:#1E7D52"></span>Recruitment</button>
+  <button class="tab-btn" onclick="showTab('onboarding',this)"><span class="tab-dot" style="background:#0B7B7B"></span>Onboarding</button>
+  <button class="tab-btn" onclick="showTab('payroll',this)"><span class="tab-dot" style="background:#C8962A"></span>Payroll</button>
+  <button class="tab-btn" onclick="showTab('leave',this)"><span class="tab-dot" style="background:#6B3FA0"></span>Leave</button>
+  <button class="tab-btn" onclick="showTab('offboarding',this)"><span class="tab-dot" style="background:#C0392B"></span>Offboarding</button>
+  <div style="display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;white-space:nowrap;border-left:2px solid var(--border);border-right:2px solid var(--border);margin:0 4px;">PART 2</div>
+  <button class="tab-btn" onclick="showTab('workforce',this)"><span class="tab-dot" style="background:#1E7D52"></span>Workforce Costs</button>
+  <button class="tab-btn" onclick="showTab('intern-pipeline',this)"><span class="tab-dot" style="background:#0B7B7B"></span>Intern Pipeline</button>
+  <button class="tab-btn" onclick="showTab('intern-prog',this)"><span class="tab-dot" style="background:#0B7B7B"></span>Intern Programme</button>
+  <button class="tab-btn" onclick="showTab('hr-records',this)"><span class="tab-dot" style="background:#1A3560"></span>HR Records</button>
+  <button class="tab-btn" onclick="showTab('hrdc',this)"><span class="tab-dot" style="background:#C8962A"></span>HRDC</button>
+  <button class="tab-btn" onclick="showTab('disciplinary',this)"><span class="tab-dot" style="background:#C0392B"></span>Disciplinary</button>
+  <button class="tab-btn" onclick="showTab('appraisals',this)"><span class="tab-dot" style="background:#6B3FA0"></span>Appraisals</button>
+  <button class="tab-btn" onclick="showTab('statutory',this)"><span class="tab-dot" style="background:#D4720A"></span>Statutory Calendar</button>
+  <button class="tab-btn" onclick="showTab('handbook',this)"><span class="tab-dot" style="background:#1A6B72"></span>Handbook Review</button>
+  <button class="tab-btn" onclick="showTab('hr-reporting',this)"><span class="tab-dot" style="background:#1E7D52"></span>HR Reporting</button>
+  <button class="tab-btn" onclick="showTab('culture',this)"><span class="tab-dot" style="background:#E8B84B"></span>Culture & Experience</button>
+  <button class="tab-btn" onclick="showTab('gaps',this)"><span class="tab-dot" style="background:#D4720A"></span>Gaps & Actions</button>
+`;
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+function toggleStep(box) { box.classList.toggle('expanded'); }
+</script>
+
+
+</body></html>
